@@ -738,7 +738,7 @@ class DynamicBucketer:
             try:
                 self._source_exhausted = False
                 while not self._source_exhausted:
-                    if sum(b.qsize() for b in self.buckets) == self.buffer_size:
+                    if sum(b.qsize() for b in self.buckets) >= self.buffer_size:
                         time.sleep(0.1)
                         continue
                     cuts = next(self.cuts_iter)
